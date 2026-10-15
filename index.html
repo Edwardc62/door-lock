@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Door Lock</title>
+    <script type="module" crossorigin src="./assets/index-DqGFeBna.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-9nSYs4bG.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>Door Lock</h1>
+        <span class="mode-badge" title="No hardware connected. The lock is simulated in this page.">
+          Demo mode · simulated lock
+        </span>
+      </header>
+
+      <section class="card status-card" aria-live="polite">
+        <div id="status-icon" class="status-icon" aria-hidden="true"></div>
+        <p id="status-text" class="status-text">Locked</p>
+        <p id="status-detail" class="status-detail"></p>
+        <p id="night-badge" class="night-badge" hidden>🌙 Night lock active</p>
+        <button id="toggle-button" class="toggle-button" type="button">Unlock</button>
+      </section>
+
+      <section class="card">
+        <h2>Auto-relock</h2>
+        <div id="relock-presets" class="preset-row" role="group" aria-label="Quick picks"></div>
+        <div class="time-row">
+          <label class="field">
+            <span>Minutes</span>
+            <input id="relock-minutes" type="number" min="0" max="60" step="1" inputmode="numeric" />
+          </label>
+          <label class="field">
+            <span>Seconds</span>
+            <input id="relock-seconds" type="number" min="0" max="59" step="1" inputmode="numeric" />
+          </label>
+        </div>
+        <p class="hint">After you unlock, the door locks itself again after this long. Set both to 0 to lock and unlock manually.</p>
+        <p id="relock-error" class="error" role="alert" hidden></p>
+      </section>
+
+      <section class="card">
+        <h2>Night auto-lock</h2>
+        <label class="field field-inline">
+          <input id="night-enabled" type="checkbox" />
+          <span>Lock automatically at night</span>
+        </label>
+        <div class="time-row">
+          <label class="field">
+            <span>From</span>
+            <input id="night-start" type="time" required />
+          </label>
+          <label class="field">
+            <span>Until</span>
+            <input id="night-end" type="time" required />
+          </label>
+        </div>
+        <label class="field night-relock-field">
+          <span>Relock after unlocking at night (seconds)</span>
+          <input id="night-relock-seconds" type="number" min="0" max="3600" step="1" inputmode="numeric" />
+        </label>
+        <p class="hint">
+          The door locks when this window starts. During it, every unlock relocks after this many seconds instead of
+          the auto-relock time. Use 0 to stay unlocked.
+        </p>
+        <p id="night-relock-error" class="error" role="alert" hidden></p>
+      </section>
+
+      <p id="save-message" class="save-message" role="status"></p>
+    </main>
+  </body>
+</html>
